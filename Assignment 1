@@ -1,0 +1,23 @@
+ciao Leonardo,
+ti scrivo qua 2 appunti a proposito della chiacchierata che abbiamo appena fatto su come procedere.
+
+Il focus è fare un assessment di (i) la correttezza del codice e (ii) il suo comportamento.
+
+1. CORRETTEZZA
+
+  * dovresti verificare che, per una data griglia, l’errore dell’interpolazione sui punti griglia sia indenticamente sempre zero;
+
+  * dovresti anche verificare che per casi in cui l’interpolazione lineare è supposta essere corretta, l’errore sia zero anche al di fuori della griglia ( puoi farlo generando N punti casuali all’interno del volume della griglia e mostrando che l’errore è zero );
+
+  * fai in modo che se un punto di input cade al di fuori della griglia il comportamento del codice è stabile e corretto.
+
+Entrambe le prove qua sopra dovrebbero essere fatte per più di una griglia.
+Proprio proprio volendo, oltre a griglie abbastanza cubiche potresti provare anche con griglie patologiche in ognuna delle dimensioni (intendo dire che abbiano 2 o 3 punti griglia)
+
+2. COMPORTAMENTO
+Data una certa griglia di interpolazione e una certa funzione di test, bisogna caratterizzare l’errore di interpolazione e verificare che abbia un comportamento sensanto.
+Gnerando N punti causali all’interno del volume della griglia dovresti riportare il comportamento dell’errore che ottieni:
+
+  * semplicemente plottando gli errori per ogni punto, come dicevamo e caratterizzandoli in termini di minimo e massimo (in termini relativi rispetto al valore vero della funzione);
+
+  * plottando gli errori in funzione della distanza dal più vicino punto griglia

@@ -1,10 +1,12 @@
-import math
-import numpy
-import pickle
+import math                                               #this code interpolates the
+import numpy                                              #value of f in o from data provided
+import pickle                                             #by tabular.py
+
+o=[1.00,0.50,0.20]                                        #point to estimate the function in
 
 def f(x,y,z):                                             #function to be estimated
-   r=x*math.exp(-y**2-z**3)*math.cos(math.pi*x)           #unnecessary
-   return r
+   r=x*math.exp(-y**2-z**3)*math.cos(math.pi*x)           #unnecessary - for control
+   return r                                               #f key values are tabulated
 
 def g(x,y,z,x0,y0,z0,F):                                  #trilinear interpolating function
     if(x<x0[0] or x>x0[d[0]] or y<y0[0] or y>y0[d[1]] or z<z0[0] or z>z0[d[2]]):
@@ -42,14 +44,12 @@ def g(x,y,z,x0,y0,z0,F):                                  #trilinear interpolati
                     r=r+(-1)**(i+j+k-1)*(x-x0[l+(i+1)%2])*(y-y0[m+(j+1)%2])*\
                     (z-z0[n+(k+1)%2])*F[l+i,m+j,n+k]
                     k=k+1                                #f values are tabulated 
-                j=j+1                                    #in a list (imported)
+                j=j+1                                    #in the imported list
             i=i+1
         r=r/((x0[l+1]-x0[l])*(y0[m+1]-y0[m])*(z0[n+1]-z0[n]))
         return r
-
-o=[1.00,0.50,0.20]                                       #point to estimate the function in
   
-dat = open('store.pckl', 'rb')
+dat = open('store.pckl', 'rb')                           #importing data
 Tab = pickle.load(dat)
 X0  = pickle.load(dat)
 Y0  = pickle.load(dat)
@@ -57,5 +57,5 @@ Z0  = pickle.load(dat)
 d   = pickle.load(dat)
 dat.close()
     
-print("real function value:", f(o[0],o[1],o[2]))
+print("real function value:", f(o[0],o[1],o[2]))         #for control
 print("iterpolated value  :", g(o[0],o[1],o[2],X0,Y0,Z0,Tab))

@@ -1,6 +1,6 @@
-import math
-import numpy
-import pickle
+import math                                       #this code generates the 
+import numpy                                      #array of values for the
+import pickle                                     #interpoolation. run first
 
 def f(x,y,z):                                     #function to be estimated
    r=x*math.exp(-y**2-z**3)*math.cos(math.pi*x)
